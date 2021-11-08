@@ -76,6 +76,11 @@ jobs:
               CC: clang
               METADATA: asciidoc-pdf
 
+          - container: "opensuse/tumbleweed"
+            env:
+              CC: gcc
+              METADATA: asciidoctor
+
           - container: "opensuse/leap"
             env:
               CC: gcc
