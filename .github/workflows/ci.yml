@@ -26,6 +26,8 @@ jobs:
         INSTALL=${{ matrix.container }}
         INSTALL="${INSTALL%%:*}"
         INSTALL="${INSTALL%%/*}"
-        zypper --non-interactive --plus-content debug install gdb zypper-debuginfo libzypp-debuginfo
+        #zypper --non-interactive --plus-content debug install gdb zypper-debuginfo libzypp-debuginfo
+        ulimit -n
+        ulimit -n 1023
         (sleep 300; bash -c 'ls -lR /proc/*/fd; gdb -p $(pidof zypper) -ex "thread apply all bt" -ex q'; kill -9 $$) &
         zypper --non-interactive install --force-resolution --no-recommends asciidoc autoconf automake clang findutils gcc git gzip iproute2 make kernel-default-devel keyutils-devel libacl-devel libaio-devel libcap-devel libmnl-devel libnuma-devel libopenssl-devel libselinux-devel libtirpc-devel linux-glibc-devel lsb-release perl-JSON pkg-config
