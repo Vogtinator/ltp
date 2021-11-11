@@ -27,6 +27,7 @@ jobs:
         INSTALL="${INSTALL%%:*}"
         INSTALL="${INSTALL%%/*}"
         zypper --non-interactive install wget
+        ulimit -n 1025
         wget https://api.opensuse.org/public/build/home:zypp-team:openSUSE:libzypp:PR-357/openSUSE_Tumbleweed/x86_64/libzypp/libzypp-18.0.0.git.1636631194.4813958d6-7.1.x86_64.rpm
         rpm -Uvh --nosignature ./libzypp-18.0.0.git.1636631194.4813958d6-7.1.x86_64.rpm
         zypper --non-interactive install --force-resolution --no-recommends asciidoc autoconf automake clang findutils gcc git gzip iproute2 make kernel-default-devel keyutils-devel libacl-devel libaio-devel libcap-devel libmnl-devel libnuma-devel libopenssl-devel libselinux-devel libtirpc-devel linux-glibc-devel lsb-release perl-JSON pkg-config
